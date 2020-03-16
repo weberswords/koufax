@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/heroku@0.0.10.
 jobs:
   build-and-test:
     executor:
@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-  deploy-job:
+  deploy:
     executor:
       name: node/default
     steps:
@@ -23,4 +23,12 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
-        - deploy-job
+    heroku_deploy:
+      jobs:
+        - build
+        - heroku/deploy-via-git:
+            requires:
+              - build-and-test
+            filters:
+              branches:
+                only: sequential-branch-filter
