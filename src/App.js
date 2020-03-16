@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [word, setWord] = useState('bark');
+  const [word, setWord] = useState('woof');
 
   function changeWord() {
     if (word === "koufax") {
-      setWord("bark");
+      setWord("woof");
     } else {
       setWord("koufax");
     }

@@ -25,7 +25,7 @@ it('fires onClick when button clicked', () => {
 it('renders text', () => {
 	const {getByLabelText} = render(<App />);
 	const linkElement = getByLabelText('text');
-	expect(linkElement).toHaveTextContent("bark"); 
+	expect(linkElement).toHaveTextContent("woof"); 
 });
 
 it('text shows bark after two clicks', () => {
@@ -34,7 +34,7 @@ it('text shows bark after two clicks', () => {
 	const textElement = getByLabelText('text');
 	fireEvent.click(linkElement);
 	fireEvent.click(linkElement);
-	expect(textElement).toHaveTextContent("bark");
+	expect(textElement).toHaveTextContent("woof");
 })
 
 

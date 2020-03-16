@@ -19,7 +19,7 @@ jobs:
       - heroku/install
       - run:
           command: >
-            echo "Heyyyyyyyy"
+            echo "I love LA"
       - heroku/deploy-via-git
 
 workflows:
