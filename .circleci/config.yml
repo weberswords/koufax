@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
-  node: circleci/heroku@1.0.1
+  heroku: circleci/heroku@1.0.1
+  node: circleci/node@1.1.6
 jobs:
   build-and-test:
     executor:
@@ -12,23 +13,19 @@ jobs:
             - run: npm install
             - run: npm test
   deploy:
-    executor:
-      name: node/default
+    executor: heroku/default
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "S1a:d4:d6:99:73:a0:8b:1f:28:bf:c5:5d:55:21:c2:7b"
-      - run: pwd
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "Heyyyyyyyy"
+      - heroku/deploy-via-git
+
 workflows:
     build-and-test:
       jobs:
         - build-and-test
     heroku_deploy:
       jobs:
-        - build
-        - heroku/deploy-via-git:
-            requires:
-              - build-and-test
-            filters:
-              branches:
-                only: sequential-branch-filter
+        - deploy
