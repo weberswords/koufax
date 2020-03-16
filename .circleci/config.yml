@@ -18,7 +18,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "S1a:d4:d6:99:73:a0:8b:1f:28:bf:c5:5d:55:21:c2:7b"
-      - run: ssh root@192.241.134.93
+      - run: ssh root@192.241.134.93 -y
 
 workflows:
     build-and-test:
