@@ -1,31 +1,7 @@
 version: 2.1
 orbs:
-  heroku: circleci/heroku@1.0.1
-  node: circleci/node@1.1.6
-jobs:
-  build-and-test:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - run:
-          command: >
-            echo "I love LA"
-      - heroku/deploy-via-git
-
+  node: circleci/node@3.0.0
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
-    heroku_deploy:
-      jobs:
-        - deploy
+  node-tests:
+    jobs:
+      - node/test
