@@ -14,5 +14,4 @@ workflows:
     build-and-test:
       jobs:
         - build
-        - node/run
         - node/test
