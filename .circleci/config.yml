@@ -4,9 +4,10 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/node
+      - image: cimg/node:18.9.0
     steps:
-      - node/install-packages
+      - checkout
+      - run: node --version
 
 workflows:
     build-and-test:
