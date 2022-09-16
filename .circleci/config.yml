@@ -8,10 +8,10 @@ jobs:
     steps:
       - checkout
       - run: node --version
+      - node/install-packages
 
 workflows:
     build-and-test:
       jobs:
-        - build
         - node/run
         - node/test
