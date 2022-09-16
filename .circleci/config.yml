@@ -9,6 +9,8 @@ jobs:
       - checkout
       - run: node --version
       - node/install-packages
+      - store_test_results:
+          path: ./test-results
 
 workflows:
     build-and-test:
