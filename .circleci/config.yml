@@ -10,7 +10,7 @@ jobs:
       - run: node --version
       - node/install-packages
       - store_test_results:
-          path: ./test-results
+          path: ./
 
 workflows:
     build-and-test:
